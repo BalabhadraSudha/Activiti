@@ -63,7 +63,7 @@ public class StartTimerEventTest extends PluggableActivitiTestCase {
     assertEquals(1, jobQuery.count());
 
     processEngineConfiguration.getClock().setCurrentTime(new SimpleDateFormat("dd/MM/yyyy hh:mm:ss").parse("15/11/2036 11:12:30"));
-    waitForJobExecutorToProcessAllJobs(5000L, 200L);
+    waitForJobExecutorToProcessAllJobs(20000L, 200L);
 
     List<ProcessInstance> pi = runtimeService.createProcessInstanceQuery().processDefinitionKey("startTimerEventExample").list();
     assertEquals(1, pi.size());
@@ -159,7 +159,7 @@ public class StartTimerEventTest extends PluggableActivitiTestCase {
     assertEquals(1, jobQuery.count());
 
     moveByMinutes(5);
-    waitForJobExecutorOnCondition(10000, 500, new Callable<Boolean>() {
+    waitForJobExecutorOnCondition(60000, 500, new Callable<Boolean>() {
       public Boolean call() throws Exception {
         // we check that correct version was started
         ProcessInstance processInstance = runtimeService.createProcessInstanceQuery().processDefinitionKey("startTimerEventExample").singleResult();

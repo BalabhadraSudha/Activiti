@@ -277,7 +277,7 @@ public class AsyncTaskTest extends PluggableActivitiTestCase {
     // now there should be one job in the database:
     assertEquals(1, managementService.createJobQuery().count());
 
-    waitForJobExecutorToProcessAllJobs(20000L, 250L);
+    waitForJobExecutorToProcessAllJobs(60000L, 250L);
 
     assertEquals(0, managementService.createJobQuery().count());
     assertEquals(0, runtimeService.createProcessInstanceQuery().count());

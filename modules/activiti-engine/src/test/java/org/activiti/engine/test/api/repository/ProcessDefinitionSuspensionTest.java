@@ -287,7 +287,7 @@ public class ProcessDefinitionSuspensionTest extends PluggableActivitiTestCase {
     // Move clock 8 days further and let job executor run
     long eightDaysSinceStartTime = oneWeekFromStartTime + (24 * 60 * 60 * 1000);
     processEngineConfiguration.getClock().setCurrentTime(new Date(eightDaysSinceStartTime));
-    waitForJobExecutorToProcessAllJobs(5000L, 50L);
+    waitForJobExecutorToProcessAllJobs(60000L, 50L);
 
     // verify job is now removed
     assertEquals(0, managementService.createJobQuery().processDefinitionId(processDefinition.getId()).count());
@@ -348,7 +348,7 @@ public class ProcessDefinitionSuspensionTest extends PluggableActivitiTestCase {
     // Move clock 9 days further and let job executor run
     long eightDaysSinceStartTime = oneWeekFromStartTime + (2 * 24 * 60 * 60 * 1000);
     processEngineConfiguration.getClock().setCurrentTime(new Date(eightDaysSinceStartTime));
-    waitForJobExecutorToProcessAllJobs(30000L, 50L);
+    waitForJobExecutorToProcessAllJobs(60000L, 50L);
 
     // verify job is now removed
     assertEquals(0, managementService.createJobQuery().processDefinitionId(processDefinition.getId()).count());
